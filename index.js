@@ -42,59 +42,15 @@ const type = 'todos-native-live';
 
 // routes
 app.post('/', checkJwt, (req, res) => {
-    appbaseRef.index({
-	  type,
-      body: {
-		title: req.body.title,
-		completed: false,
-		createdAt: Date.now(),
-		name: req.body.name,
-		avatar: req.body.avatar
-	  }
-    }).on("data", function(response) {
-	  res.send({
-		  status: 200,
-		  message: 'success'
-	  });
-    }).on("error", function(error) {
-	  console.error(error);
-	  res.send(error);
-    })
+    // Create Todo endpoint
 })
 
 app.put('/', checkJwt, (req, res) => {
-    appbaseRef.update({
-	  id: req.body.id,
-	  type,
-      body: {
-		  doc: {
-			  completed: req.body.completed
-		  }
-	  }
-    }).on("data", function(response) {
-	  res.send({
-		  status: 200,
-		  message: 'success'
-	  });
-    }).on("error", function(error) {
-	  console.error(error);
-	  res.send(error);
-    })
+    // update todo endpoint
 })
 
 app.delete('/', checkJwt, (req, res) => {
-	appbaseRef.delete({
-		id: req.body.id,
-		type
-	}).on("data", function(response) {
-		res.send({
-			status: 200,
-			message: 'success'
-		});
-	}).on("error", function(error) {
-		console.error(error);
-		res.send(error);
-	})
+	// delete todo endpoint
 })
 
 app.listen(8000, () => {
